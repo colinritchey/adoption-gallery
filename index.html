@@ -1,0 +1,48 @@
+<!-- Put your final HTML here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <script type="text/javascript" language="javascript" src="./assets/data/dogs.json"></script>  -->
+  <link rel="stylesheet" href="./assets/styles/site.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <script type="text/javascript" src="./js/index.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(event) {
+        // - Code to execute when all DOM content is loaded. 
+        // - including fonts, images, etc.
+        console.log('Loaded');
+        getJson()
+        // loadJSON("./assets/data/dogs.json", parseJson);
+        
+    });
+  </script>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <h1>Puppy image gallery</h1>
+    <blockquote class="site-header__quote">
+      <p>A dog will teach you unconditional love. If you can have that in your life, things won't be too bad.</p>
+      <cite>&mdash;Robert Wagner</cite>
+    </blockquote>
+  </header>
+  <!-- HEADER -->
+
+  <div class="thumbnail-list" id="thumbnail-list" />
+  
+  <div class="modal" id="modal" />
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>Built by a wonderful developer for Asana.</p>
+  </footer>
+  <!-- FOOTER -->
+  
+</body>
+</html>

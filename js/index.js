@@ -7,7 +7,9 @@ function createCards (data) {
 
   data.dogs.map((value, idx) => {
     thumbnailList.appendChild(createCard(value.image));
-  })
+  });
+
+  // document.addEventListener('click', openModal, true);
 }
 
 function createCard (link) {
@@ -19,8 +21,10 @@ function createCard (link) {
   img.setAttribute('height', '100px');
   
   card.setAttribute('class', 'thumbnail-card')
+  card.setAttribute('data-link', link)
   card.appendChild(img);
 
+  card.addEventListener('click', openModal, true);
   return card;
 }
 
@@ -38,22 +42,23 @@ function getJson () {
     });
 }
 
-// function loadJSON(path, callback) {   
+function openModal (el) {
+  // const img = el.target.querySelector(img);
+  // const link = img.getAttribute('src');
 
-//   var xobj = new XMLHttpRequest();
-//   xobj.overrideMimeType("application/json");
-//   xobj.open('GET', path, true); // Replace 'my_data' with the path to your file
+  const modalContainer = document.getElementById('modal-container');
+  modalContainer.style.visibility = 'visible';
+
+  const modal = document.getElementById('modal');
+  const img = document.createElement('img');
+  const link = el.target.getAttribute('src');
+
+  img.setAttribute('src', link);
+  // img.setAttribute('class', 'thumbnail-card');
+  img.setAttribute('width', '100px');
+  img.setAttribute('height', '100px');
   
-//   // xobj.setRequestHeader('Access-Control-Allow-Headers', 'Origin');
-//   // xobj.setRequestHeader('Content-Type', 'application/json');
-//   xobj.setRequestHeader("Access-Control-Allow-Methods", "GET");
-//   xobj.setRequestHeader("Access-Control-Allow-Headers", "*");
-  
-//   xobj.onreadystatechange = function () {
-//     if (xobj.readyState == 4 && xobj.status == "200") {
-//       // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-//       callback(xobj.responseText);
-//     }
-//   };
-//   xobj.send(null);  
-// }
+  modal.appendChild(img);
+
+  // console.log(el.target.getAttribute('src'));
+}

@@ -43,9 +43,6 @@ function getJson () {
 }
 
 function openModal (el) {
-  // const img = el.target.querySelector(img);
-  // const link = img.getAttribute('src');
-
   const modalContainer = document.getElementById('modal-container');
   modalContainer.style.visibility = 'visible';
 
@@ -54,9 +51,10 @@ function openModal (el) {
   const link = el.target.getAttribute('src');
 
   img.setAttribute('src', link);
-  // img.setAttribute('class', 'thumbnail-card');
   
   modal.appendChild(img);
+
+  modal.style.marginTop = "0%";
 
   document.body.style.overflow = 'hidden';
   
@@ -87,6 +85,5 @@ function closeModal (el) {
 
   const modalContainer = document.getElementById('modal-container');
   modalContainer.style.visibility = 'hidden';
-
-  const closeModalButton = document.getElementById('close-modal-button');
+  modal.style.marginTop = "100%";
 }

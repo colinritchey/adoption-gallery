@@ -15,12 +15,8 @@
 <body>
   <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function(event) {
-        // - Code to execute when all DOM content is loaded. 
-        // - including fonts, images, etc.
-        console.log('Loaded');
-        getJson()
-        // loadJSON("./assets/data/dogs.json", parseJson);
-        
+      console.log('Loaded');
+      initialLoad();
     });
   </script>
   <div class="main" id="main">
@@ -33,13 +29,28 @@
       </blockquote>
     </header>
     <!-- HEADER -->
-    
-    <div class="thumbnail-list" id="thumbnail-list"></div>
-    
-    <div class="modal-container" id="modal-container">
-      <div class="modal" id="modal">
-        <svg id="close-modal-button" class="close-modal-button" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+    <div class="content">
+      <div class="thumbnail-list-container">
+        <div class="thumbnail-list" id="thumbnail-list"></div>
+        <div class="thumbnail-list-next" id="thumbnail-list-next"></div>
       </div>
+
+
+      <!-- Modal -->
+      <div class="modal-container" id="modal-container">
+        <div class="modal" id="modal">
+          <svg id="close-modal-button" class="close-modal-button" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+        </div>
+      </div>
+      <!-- Modal -->
+
+      <!-- Pagination -->
+      <div class="pagination-container">
+        <button class="pagination-button" id="prev-button">< Prev</button>
+        <button class="pagination-button" id="next-button">Next ></button>
+      </div>
+      <!-- Pagination -->
+
     </div>
 
     <!-- FOOTER -->

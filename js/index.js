@@ -1,10 +1,26 @@
 // import dogData from '..assets/data/dogs.json';
 // import json from './data/dogs.json'; 
 
-function createCards (data) {
-  console.log('Creating cards...');
-  const thumbnailList = document.getElementById('thumbnail-list');
+function initialLoad () {
+  getJson('thumbnail-list')
+  getJson('thumbnail-list-next');
 
+  const nextButton = document.getElementById('next-button');
+
+  nextButton.addEventListener('click', (el) => {
+    const thumbnailList = document.getElementById('thumbnail-list');
+    thumbnailList.style.marginLeft = '-150%';
+    thumbnailList.style.position = 'absolute';
+
+    const thumbnailListNext = document.getElementById('thumbnail-list-next');
+
+    thumbnailListNext.style.marginLeft = '0%';
+  }, true)
+}
+
+function createCards (data, elementId) {
+  console.log('Creating cards...');
+  const thumbnailList = document.getElementById(elementId);
   data.dogs.map((value, idx) => {
     thumbnailList.appendChild(createCard(value.image));
   });
@@ -32,13 +48,12 @@ function parseJson (data) {
   console.log(data);
 }
 
-function getJson () {
-  fetch("./assets/data/dogs.json")
+function getJson (elementId) {
+  return fetch("./assets/data/dogs.json")
     .then(response => response.json())
     .then(json => {
       console.log(json);
-      createCards(json)
-
+      createCards(json, elementId)
     });
 }
 

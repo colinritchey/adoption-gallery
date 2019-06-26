@@ -1,14 +1,14 @@
 /* Thumbnail */
 .thumbnail-list-container {
   position: relative;
-  padding: 0.5rem;
-  height: 400px;
+  
+  height: 100%;
 }
 
 .thumbnail-list {
   width: 100%;
   transition: 1s ease all;
-
+  padding: 0.5rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(116px, 1fr));
   grid-gap: 1rem;
@@ -18,8 +18,9 @@
   position: absolute;
   width: 100%;
   transition: 1s ease all;
-  
-  top: 0.5rem;
+  padding: 0.5rem;
+
+  top: 0;
   margin-left: 150%;
   
   display: grid;

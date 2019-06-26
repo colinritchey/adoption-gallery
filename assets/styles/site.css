@@ -52,4 +52,5 @@ a {
 .content {
   margin: 0 20%;
   overflow: hidden;
+  min-height: 400px;
 }

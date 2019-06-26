@@ -13,7 +13,8 @@ function initialLoad () {
     const thumbnailListNext = document.getElementById('thumbnail-list-next');
 
     thumbnailListNext.style.marginLeft = '0%';
-  
+    thumbnailListNext.style.position = 'relative';
+
     setTimeout(replaceIds, 1000);
   }, true)
 }

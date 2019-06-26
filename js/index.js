@@ -1,6 +1,4 @@
-// import dogData from '..assets/data/dogs.json';
-// import json from './data/dogs.json'; 
-
+ 
 function initialLoad () {
   getJson('thumbnail-list')
   getJson('thumbnail-list-next');
@@ -15,8 +13,46 @@ function initialLoad () {
     const thumbnailListNext = document.getElementById('thumbnail-list-next');
 
     thumbnailListNext.style.marginLeft = '0%';
+  
+    setTimeout(replaceIds, 1000);
   }, true)
 }
+
+function getJson (elementId) {
+  return fetch("./assets/data/dogs.json")
+    .then(response => response.json())
+    .then(json => {
+      console.log(json);
+      createCards(json, elementId)
+    });
+}
+
+/** Thumbnail Functions */
+
+function replaceIds () {
+  const thumbnailListContainer = document.getElementById('thumbnail-list-container');
+  const thumbnailListPrev = document.getElementById('thumbnail-list-prev');
+  thumbnailListContainer.removeChild(thumbnailListPrev);
+
+  const thumbnailList = document.getElementById('thumbnail-list');
+  const thumbnailListNext = document.getElementById('thumbnail-list-next');
+
+  thumbnailList.setAttribute('id', 'thumbnail-list-prev');
+  thumbnailList.setAttribute('class', 'thumbnail-list-prev');
+  
+  thumbnailListNext.setAttribute('id', 'thumbnail-list');
+  thumbnailListNext.setAttribute('class', 'thumbnail-list');
+
+  const newThumbnailListNext = document.createElement('div');
+
+  newThumbnailListNext.setAttribute('class', 'thumbnail-list-next');
+  newThumbnailListNext.setAttribute('id', 'thumbnail-list-next');
+
+  thumbnailListContainer.appendChild(newThumbnailListNext);
+  getJson('thumbnail-list-next');
+}
+
+/** Card Functions */
 
 function createCards (data, elementId) {
   console.log('Creating cards...');
@@ -42,63 +78,4 @@ function createCard (link) {
 
   card.addEventListener('click', openModal, true);
   return card;
-}
-
-function parseJson (data) {
-  console.log(data);
-}
-
-function getJson (elementId) {
-  return fetch("./assets/data/dogs.json")
-    .then(response => response.json())
-    .then(json => {
-      console.log(json);
-      createCards(json, elementId)
-    });
-}
-
-function openModal (el) {
-  const modalContainer = document.getElementById('modal-container');
-  modalContainer.style.visibility = 'visible';
-
-  const modal = document.getElementById('modal');
-  const img = document.createElement('img');
-  const link = el.target.getAttribute('src');
-
-  img.setAttribute('src', link);
-  
-  modal.appendChild(img);
-
-  modal.style.marginTop = "0%";
-
-  document.body.style.overflow = 'hidden';
-  
-  const closeModalButton = document.getElementById('close-modal-button');
-  closeModalButton.addEventListener('click', closeModal, true);
-  
-  /** Close Modal if outside click */
-  modalContainer.addEventListener('click', handleOutsideClick, true);
-}
-
-function handleOutsideClick (el) {
-  if (document.getElementById('modal').contains(event.target)) {
-    console.log('clicked inside');
-  } else {
-    console.log('clicked outside');
-    closeModal();
-  }
-}
-
-function closeModal (el) {
-  // el.preventDefault();
-  document.body.style.overflow = 'auto';
-  
-  const modal = document.getElementById('modal');
-  const img = modal.getElementsByTagName('img')[0];
-
-  modal.removeChild(img);
-
-  const modalContainer = document.getElementById('modal-container');
-  modalContainer.style.visibility = 'hidden';
-  modal.style.marginTop = "100%";
 }

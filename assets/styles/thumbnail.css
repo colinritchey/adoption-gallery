@@ -1,7 +1,7 @@
 /* Thumbnail */
 .thumbnail-list-container {
   position: relative;
-  padding: 4px;
+  padding: 0.5rem;
   height: 400px;
 }
 
@@ -19,7 +19,7 @@
   width: 100%;
   transition: 1s ease all;
   
-  top: 0;
+  top: 0.5rem;
   margin-left: 150%;
   
   display: grid;

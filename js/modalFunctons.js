@@ -1,11 +1,16 @@
  
 function openModal (el) {
+  const clickedTarget = el.target;
+  if (!clickedTarget) return null;
+
+  const link = clickedTarget.getAttribute('src');
+  if (!link) return null;
+
   const modalContainer = document.getElementById('modal-container');
   modalContainer.style.visibility = 'visible';
 
   const modal = document.getElementById('modal');
   const img = document.createElement('img');
-  const link = el.target.getAttribute('src');
 
   img.setAttribute('src', link);
   

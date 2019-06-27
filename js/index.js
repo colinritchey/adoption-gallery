@@ -3,6 +3,8 @@ function initialLoad () {
   getJson('thumbnail-list')
   getJson('thumbnail-list-next');
 
+  document.getElementById('thumbnail-list-container').addEventListener('click', openModal, true);
+
   const nextButton = document.getElementById('next-button');
 
   nextButton.addEventListener('click', (el) => {
@@ -61,8 +63,6 @@ function createCards (data, elementId) {
   data.dogs.map((value, idx) => {
     thumbnailList.appendChild(createCard(value.image));
   });
-
-  // document.addEventListener('click', openModal, true);
 }
 
 function createCard (link) {
@@ -77,6 +77,6 @@ function createCard (link) {
   card.setAttribute('data-link', link)
   card.appendChild(img);
 
-  card.addEventListener('click', openModal, true);
+  // card.addEventListener('click', openModal, true);
   return card;
 }

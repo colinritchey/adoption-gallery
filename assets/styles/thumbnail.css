@@ -12,6 +12,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(116px, 1fr));
   grid-gap: 1rem;
+
+  top: 0;
 }
 
 .thumbnail-list-next {
@@ -22,6 +24,20 @@
 
   top: 0;
   margin-left: 150%;
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(116px, 1fr));
+  grid-gap: 1rem;
+}
+
+.thumbnail-list-prev {
+  position: absolute;
+  width: 100%;
+  transition: 1s ease all;
+  padding: 0.5rem;
+
+  top: 0;
+  margin-left: -150%;
   
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(116px, 1fr));

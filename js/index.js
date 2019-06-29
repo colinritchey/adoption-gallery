@@ -5,6 +5,8 @@ function initialLoad () {
 
   document.getElementById('thumbnail-list-container').addEventListener('click', openModal, true);
 
+
+  /**  Add Click action to next button */
   const nextButton = document.getElementById('next-button');
 
   nextButton.addEventListener('click', (el) => {
@@ -17,8 +19,27 @@ function initialLoad () {
     thumbnailListNext.style.marginLeft = '0%';
     thumbnailListNext.style.position = 'relative';
 
-    setTimeout(replaceIds, 1000);
+    setTimeout(() => replaceIds('next'), 1000);
   }, true)
+  /** */
+
+
+  /**  Add Click action to prev button */
+  const prevButton = document.getElementById('prev-button');
+  prevButton.addEventListener('click', (el) => {
+    const thumbnailList = document.getElementById('thumbnail-list');
+    thumbnailList.style.position = 'absolute';
+    thumbnailList.style.marginLeft = '150%'; 
+
+    const thumbnailListPrev = document.getElementById('thumbnail-list-prev');
+
+    thumbnailListPrev.style.position = 'relative';
+    thumbnailListPrev.style.marginLeft = '0%';
+
+    setTimeout(() => replaceIds('prev'), 1000);
+  }, true);
+  /** */
+
 }
 
 function getJson (elementId) {
@@ -32,27 +53,47 @@ function getJson (elementId) {
 
 /** Thumbnail Functions */
 
-function replaceIds () {
+function replaceIds (direction) {
   const thumbnailListContainer = document.getElementById('thumbnail-list-container');
-  const thumbnailListPrev = document.getElementById('thumbnail-list-prev');
-  thumbnailListContainer.removeChild(thumbnailListPrev);
-
   const thumbnailList = document.getElementById('thumbnail-list');
+  const thumbnailListPrev = document.getElementById('thumbnail-list-prev');
   const thumbnailListNext = document.getElementById('thumbnail-list-next');
 
-  thumbnailList.setAttribute('id', 'thumbnail-list-prev');
-  thumbnailList.setAttribute('class', 'thumbnail-list-prev');
-  
-  thumbnailListNext.setAttribute('id', 'thumbnail-list');
-  thumbnailListNext.setAttribute('class', 'thumbnail-list');
+  if (direction === 'next') {
+    thumbnailListContainer.removeChild(thumbnailListPrev);
 
-  const newThumbnailListNext = document.createElement('div');
+    thumbnailList.setAttribute('id', 'thumbnail-list-prev');
+    thumbnailList.setAttribute('class', 'thumbnail-list-prev');
+    
+    thumbnailListNext.setAttribute('id', 'thumbnail-list');
+    thumbnailListNext.setAttribute('class', 'thumbnail-list');
 
-  newThumbnailListNext.setAttribute('class', 'thumbnail-list-next');
-  newThumbnailListNext.setAttribute('id', 'thumbnail-list-next');
+    const newThumbnailListNext = document.createElement('div');
 
-  thumbnailListContainer.appendChild(newThumbnailListNext);
-  getJson('thumbnail-list-next');
+    newThumbnailListNext.setAttribute('class', 'thumbnail-list-next');
+    newThumbnailListNext.setAttribute('id', 'thumbnail-list-next');
+
+    thumbnailListContainer.appendChild(newThumbnailListNext);
+    getJson('thumbnail-list-next');
+  } else {
+
+    thumbnailListContainer.removeChild(thumbnailListNext);
+
+    thumbnailList.setAttribute('id', 'thumbnail-list-next');
+    thumbnailList.setAttribute('class', 'thumbnail-list-next');
+    
+    thumbnailListPrev.setAttribute('id', 'thumbnail-list');
+    thumbnailListPrev.setAttribute('class', 'thumbnail-list');
+
+    const newThumbnailListPrev = document.createElement('div');
+
+    newThumbnailListPrev.setAttribute('class', 'thumbnail-list-prev');
+    newThumbnailListPrev.setAttribute('id', 'thumbnail-list-prev');
+
+    thumbnailListContainer.insertBefore(newThumbnailListPrev, document.getElementById('thumbnail-list'));
+    
+    getJson('thumbnail-list-prev');
+  }
 }
 
 /** Card Functions */

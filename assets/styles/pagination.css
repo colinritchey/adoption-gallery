@@ -1,7 +1,9 @@
 /** Pagination */
 .pagination-container {
-  width: 200px;
-
+  position: absolute;
+  width: 80%;
+  top: 37%;
+  left: 10%;
   display: flex;
   justify-content: space-between;
   margin: 2rem auto;
@@ -13,6 +15,33 @@
   color: grey;
   outline: none;
   cursor: pointer;
+
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  height: 40px;
+  width: 40px;
+  border-radius: 25px;
+
+  position: absolute;
+  top: 50%;
+  left: 10%;
+}
+
+.pagination-button__right {
+  right: 10%;
+  left: inherit;
+}
+
+.pagination-button:hover {
+  background-color: lightgray;
+}
+.pagination-button:active {
+  background-color: grey;
+}
+
+.button-content {
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .pagination-button:hover {

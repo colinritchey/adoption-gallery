@@ -46,8 +46,10 @@ function closeModal (el) {
   
   const modal = document.getElementById('modal');
   const img = modal.getElementsByTagName('img')[0];
+  const sourceLink = modal.getElementsByTagName('a')[0];
 
   modal.removeChild(img);
+  modal.removeChild(sourceLink);
 
   const modalContainer = document.getElementById('modal-container');
   modalContainer.style.visibility = 'hidden';

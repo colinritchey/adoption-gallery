@@ -36,18 +36,24 @@
   cursor: pointer;
 }
 
+@media (max-width: 450px) {
+  .thumbnail-card {
+    width: 50px;
+    height: 50px;
+  }
+
+  .thumbnail-list {
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+    width: 130px;
+  }
+}
+
 .thumbnail-card:hover {
   transform: scale(1.1);
 }
 
 .thumbnail-card img {
-  /* height: 100%;
-  width: 100%; */
-
   max-width: 100%;
   max-height: 100%;
-
-  /* background-size: 100px; */
-
   object-fit: contain;
 }

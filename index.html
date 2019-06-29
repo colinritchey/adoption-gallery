@@ -18,7 +18,6 @@
 <body>
   <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function(event) {
-      console.log('Loaded');
       initialLoad();
     });
   </script>
@@ -32,13 +31,60 @@
       </blockquote>
     </header>
     <!-- HEADER -->
-    <div class="content">
-      <div class="thumbnail-list-container" id="thumbnail-list-container">
-        <div class="thumbnail-list thumbnail-list-prev" id="thumbnail-list-prev"></div>
-        <div class="thumbnail-list" id="thumbnail-list"></div>
-        <div class="thumbnail-list thumbnail-list-next" id="thumbnail-list-next"></div>
-      </div>
 
+    <div class="content-container">
+      
+      <!-- Pagination -->
+      <!-- <div class="pagination-container">
+        <button class="pagination-button" id="prev-button">
+          <div class="button-content">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          </div>
+        </button>
+
+        <button class="pagination-button" id="next-button">
+          <div class="button-content">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          </div>  
+        </button>
+      </div> -->
+      <!-- Pagination -->
+
+      <!-- Content -->
+      <div class="content">
+        <!-- Pagination -->
+        <button class="pagination-button" id="prev-button">
+          <div class="button-content">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          </div>
+        </button>
+
+        <button class="pagination-button pagination-button__right" id="next-button">
+          <div class="button-content">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          </div>  
+        </button>
+        <!-- Pagination -->
+
+        <div class="thumbnail-list-container" id="thumbnail-list-container">
+          <div class="thumbnail-list thumbnail-list-prev" id="thumbnail-list-prev"></div>
+          <div class="thumbnail-list" id="thumbnail-list"></div>
+          <div class="thumbnail-list thumbnail-list-next" id="thumbnail-list-next"></div>
+        </div>
+      </div>
+      <!-- Content -->
 
       <!-- Modal -->
       <div class="modal-container" id="modal-container">
@@ -47,14 +93,6 @@
         </div>
       </div>
       <!-- Modal -->
-
-      <!-- Pagination -->
-      <div class="pagination-container">
-        <button class="pagination-button" id="prev-button">< Prev</button>
-        <button class="pagination-button" id="next-button">Next ></button>
-      </div>
-      <!-- Pagination -->
-
     </div>
 
     <!-- FOOTER -->

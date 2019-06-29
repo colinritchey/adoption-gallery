@@ -53,3 +53,9 @@
   height: 100%;
   object-fit: contain;
 }
+
+@media (max-width: 450px) {
+  .modal {
+    width: 50%;
+  }
+}

@@ -2,6 +2,7 @@
 function initialLoad () {
   getJson('thumbnail-list')
   getJson('thumbnail-list-next');
+  getJson('thumbnail-list-prev');
 
   document.getElementById('thumbnail-list-container').addEventListener('click', openModal, true);
 
@@ -63,15 +64,15 @@ function replaceIds (direction) {
     thumbnailListContainer.removeChild(thumbnailListPrev);
 
     thumbnailList.setAttribute('id', 'thumbnail-list-prev');
-    thumbnailList.setAttribute('class', 'thumbnail-list-prev');
+    thumbnailList.setAttribute('class', 'thumbnail-list thumbnail-list-prev');
     
     thumbnailListNext.setAttribute('id', 'thumbnail-list');
     thumbnailListNext.setAttribute('class', 'thumbnail-list');
 
     const newThumbnailListNext = document.createElement('div');
 
-    newThumbnailListNext.setAttribute('class', 'thumbnail-list-next');
     newThumbnailListNext.setAttribute('id', 'thumbnail-list-next');
+    newThumbnailListNext.setAttribute('class', 'thumbnail-list  thumbnail-list-next');
 
     thumbnailListContainer.appendChild(newThumbnailListNext);
     getJson('thumbnail-list-next');
@@ -80,15 +81,15 @@ function replaceIds (direction) {
     thumbnailListContainer.removeChild(thumbnailListNext);
 
     thumbnailList.setAttribute('id', 'thumbnail-list-next');
-    thumbnailList.setAttribute('class', 'thumbnail-list-next');
+    thumbnailList.setAttribute('class', 'thumbnail-list thumbnail-list-next');
     
     thumbnailListPrev.setAttribute('id', 'thumbnail-list');
     thumbnailListPrev.setAttribute('class', 'thumbnail-list');
 
     const newThumbnailListPrev = document.createElement('div');
 
-    newThumbnailListPrev.setAttribute('class', 'thumbnail-list-prev');
     newThumbnailListPrev.setAttribute('id', 'thumbnail-list-prev');
+    newThumbnailListPrev.setAttribute('class', 'thumbnail-list thumbnail-list-prev');
 
     thumbnailListContainer.insertBefore(newThumbnailListPrev, document.getElementById('thumbnail-list'));
     
@@ -102,22 +103,25 @@ function createCards (data, elementId) {
   console.log('Creating cards...');
   const thumbnailList = document.getElementById(elementId);
   data.dogs.map((value, idx) => {
-    thumbnailList.appendChild(createCard(value.image));
+    thumbnailList.appendChild(createCard(value));
   });
 }
 
-function createCard (link) {
+function createCard (value) {
+  const { image, source } = value;
+
   const card = document.createElement('div');
   const img = document.createElement('img');
-  img.setAttribute('src', link);
-  // img.setAttribute('class', 'thumbnail-card');
+  // const sourceLink = document.createElement('a');
+  img.setAttribute('src', image);
   img.setAttribute('width', '100px');
   img.setAttribute('height', '100px');
+  img.setAttribute('data-source', source);
   
   card.setAttribute('class', 'thumbnail-card')
-  card.setAttribute('data-link', link)
   card.appendChild(img);
 
-  // card.addEventListener('click', openModal, true);
+  // sourceLink.setAttribute('src', source);
+  // card.appendChild(sourceLink);
   return card;
 }

@@ -4,6 +4,8 @@ function openModal (el) {
   if (!clickedTarget) return null;
 
   const link = clickedTarget.getAttribute('src');
+  const source = clickedTarget.dataset.source;
+
   if (!link) return null;
 
   const modalContainer = document.getElementById('modal-container');
@@ -11,13 +13,15 @@ function openModal (el) {
 
   const modal = document.getElementById('modal');
   const img = document.createElement('img');
+  const sourceLink = document.createElement('a');
 
   img.setAttribute('src', link);
+  sourceLink.setAttribute('src', source);
+  sourceLink.innerHTML = "Source";
   
   modal.appendChild(img);
-
+  modal.appendChild(sourceLink);
   modal.style.marginTop = "0%";
-
   document.body.style.overflow = 'hidden';
   
   const closeModalButton = document.getElementById('close-modal-button');
